@@ -14,4 +14,9 @@ class Parser
     @read_data
   end
 
+  def write_data(data)
+    out_file = File.new(@file_out,"w")
+    out_file.write(data)
+  end
+
 end
