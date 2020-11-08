@@ -13,7 +13,6 @@ class TranslatorEngineTest < Minitest::Test
   end
 
   def test_it_starts_with_a_dictionary
-    binding.pry
-    assert_instance_of Array, @super_translator.dictionary.keys.class
+    assert_instance_of Array, @super_translator.dictionary.keys
   end
 end
