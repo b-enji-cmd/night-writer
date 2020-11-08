@@ -1,7 +1,7 @@
 class TranslatorEngine
   attr_reader :dictionary
   def initialize
-    @parser = Parser.new
+    @super_parser = Parser.new
     @dictionary = create_alphabet
   end
   def create_alphabet
@@ -35,6 +35,10 @@ class TranslatorEngine
     }
   end
   def load_data
-    @parser.parse_file
+    @super_parser.parse_file
+  end
+
+  def write_data(data)
+    @super_parser.write_data(data)
   end
 end
