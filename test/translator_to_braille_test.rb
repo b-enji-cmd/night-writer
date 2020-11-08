@@ -34,7 +34,9 @@ class TranslatorToBrailleTest < Minitest::Test
   end
 
   def test_it_can_write_to_file
-    @to_braille.write_test
+    binding.pry
+    @to_braille.write_encoded
+    @to_braille.close
     #assert_equal "encoded braille", @to_braille.stubs(:write_encoded).returns("encoded braille")
   end
 

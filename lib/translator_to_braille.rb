@@ -17,7 +17,7 @@ class TranslatorToBraille < TranslatorEngine
     encoded.values
   end
 
-  def write_test
+  def write_encoded
     first = translate
     second = first.flatten(1)
     top = []
@@ -44,16 +44,6 @@ class TranslatorToBraille < TranslatorEngine
     end
     bot.each do |char|
       @super_parser.write_data(char)
-    end
-  end
-
-  def write_encoded
-    new_words = translate
-    new_words.each do |letter|
-      l_column = letter[0].join
-      r_column = letter[1].join
-      @super_parser.write_data(l_column)
-      @super_parser.write_data(r_column)
     end
   end
 end
