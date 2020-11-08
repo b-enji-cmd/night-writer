@@ -3,7 +3,7 @@ class Parser
   def initialize
     @file_in = ARGV[0]
     @file_out = ARGV[1]
-    @out_file = File.new(@file_out,"w")
+    @out_file = File.open(@file_out,"w")
     @in_file = File.open(@file_in,"r")
     @read_data = []
   end
@@ -13,6 +13,11 @@ class Parser
       @read_data << line
     end
     @read_data
+  end
+
+  def close_files
+    @out_file.close
+    @in_file.close
   end
 
   def write_data(data)
