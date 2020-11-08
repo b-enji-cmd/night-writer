@@ -4,7 +4,6 @@ class TranslatorEngine
     @parser = Parser.new
     @dictionary = create_alphabet
   end
-
   def create_alphabet
     {
         "a" => [%W[0\n .\n .\n], %W[.\n .\n .\n]],
@@ -34,5 +33,8 @@ class TranslatorEngine
         "y" => [%W[0\n .\n 0\n], %W[0\n 0\n 0\n]],
         "z" => [%W[0\n .\n 0\n], %W[.\n 0\n 0\n]],
     }
+  end
+  def load_data
+    @parser.parse_file
   end
 end

@@ -14,4 +14,8 @@ class TranslatorToEnglishTest < Minitest::Test
     assert_instance_of TranslatorToEnglish, @to_english
   end
 
+  def test_it_can_swap_keys_and_values
+    assert_instance_of Array, @to_english.dictionary.values
+  end
+
 end
