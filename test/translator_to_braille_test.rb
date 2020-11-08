@@ -16,7 +16,7 @@ class TranslatorToBrailleTest < Minitest::Test
   end
 
   def test_it_can_inherit_from_super
-    assert @to_braille.parser
+    assert @to_braille.super_parser
     assert @to_braille.dictionary
     assert @to_braille.data
   end
@@ -34,6 +34,7 @@ class TranslatorToBrailleTest < Minitest::Test
   end
 
   def test_it_can_write_to_file
+    @to_braille.write_encoded
     #assert_equal "encoded braille", @to_braille.stubs(:write_encoded).returns("encoded braille")
   end
 
