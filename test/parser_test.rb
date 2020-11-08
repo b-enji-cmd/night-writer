@@ -33,7 +33,6 @@ class ParserTest < Minitest::Test
 
   def test_it_can_return_word_count_cli
     @parser.parse_file
-    @parser.word_count
     assert_equal "Created 'braille.txt' containing 10 characters", @parser.word_count
   end
 end
