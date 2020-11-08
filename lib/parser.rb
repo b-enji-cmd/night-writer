@@ -19,4 +19,10 @@ class Parser
     out_file.write(data)
   end
 
+  def word_count
+    test = @read_data.flat_map(&:chars)
+    test.delete(' ')
+    test.delete('\n')
+    p "Created '#{@file_out}' containing #{test.count} characters"
+  end
 end

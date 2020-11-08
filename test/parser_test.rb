@@ -27,6 +27,13 @@ class ParserTest < Minitest::Test
   end
 
   def test_it_can_write_to_file
-    assert @parser.write_data(fixture_file_for_writing_data)
+    test_data = fixture_file_for_writing_data
+    assert @parser.write_data(test_data)
+  end
+
+  def test_it_can_return_word_count_cli
+    @parser.parse_file
+    @parser.word_count
+    assert_equal "Created 'braille.txt' containing 10 characters", @parser.word_count
   end
 end
