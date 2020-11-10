@@ -26,5 +26,4 @@ class TranslatorEngineTest < Minitest::Test
     assert_instance_of Array, @to_braille.dictionary.keys
   end
 
-
 end

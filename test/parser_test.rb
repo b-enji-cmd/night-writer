@@ -1,6 +1,4 @@
-require './lib/parser'
-require 'minitest/autorun'
-require 'pry'
+require './test/test_helper'
 
 class ParserTest < Minitest::Test
   def setup
@@ -17,22 +15,14 @@ class ParserTest < Minitest::Test
     assert_instance_of String, @parser.read_data[-1]
   end
 
-  def fixture_file_for_writing_data
-    data_collector = ""
-    incoming_text = @parser.parse_file
-    incoming_text.each do |line|
-      data_collector += line
-    end
-    data_collector
-  end
 
   def test_it_can_write_to_file
-    test_data = fixture_file_for_writing_data
-    assert @parser.write_data(test_data)
+    test = @parser.parse_file
+    assert @parser.write_data(test)
   end
 
   def test_it_can_return_word_count_cli
     @parser.parse_file
-    assert_equal "Created 'braille.txt' containing 10 characters", @parser.word_count
+    assert_equal "Created 'braille.txt' containing 5 characters", @parser.word_count
   end
 end

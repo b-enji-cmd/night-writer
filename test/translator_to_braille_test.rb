@@ -1,12 +1,8 @@
-require './lib/parser'
-require './lib/translator_engine'
-require './lib/translator_to_braille'
-require 'minitest/autorun'
-require 'mocha/minitest'
-require 'pry'
+require './test/test_helper'
 
 class TranslatorToBrailleTest < Minitest::Test
   def setup
+    @parser = Parser.new
     @super_translator = TranslatorEngine.new
     @to_braille = TranslatorToBraille.new
   end
@@ -18,11 +14,6 @@ class TranslatorToBrailleTest < Minitest::Test
   def test_it_can_inherit_from_super
     assert @to_braille.super_parser
     assert @to_braille.dictionary
-    assert @to_braille.data
-  end
-
-  def test_it_can_get_data_from_parser
-    assert_instance_of Array, @to_braille.data
   end
 
   def test_it_can_handle_data
@@ -33,11 +24,10 @@ class TranslatorToBrailleTest < Minitest::Test
     assert_instance_of String, @to_braille.translate[0][0][0]
   end
 
+
   def test_it_can_write_to_file
-    binding.pry
     @to_braille.write_encoded
-    @to_braille.close
-    #assert_equal "encoded braille", @to_braille.stubs(:write_encoded).returns("encoded braille")
+    @parser.close_file
   end
 
 end
