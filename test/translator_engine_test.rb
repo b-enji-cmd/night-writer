@@ -1,8 +1,4 @@
-require './lib/parser'
-require './lib/translator_engine'
-require './lib/translator_to_braille'
-require 'minitest/autorun'
-require 'pry'
+require './test/test_helper'
 
 class TranslatorEngineTest < Minitest::Test
   def setup
