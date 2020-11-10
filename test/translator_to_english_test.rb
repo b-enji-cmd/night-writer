@@ -11,14 +11,20 @@ class TranslatorToEnglishTest < Minitest::Test
     assert_instance_of TranslatorToEnglish, @to_english
   end
 
-  def test_it_can_swap_keys_and_values
-    @to_english.hash_swap
-    assert_instance_of Array, @to_english.dictionary.values
+  def test_it_can_gather_letters
+    expected = {"letter1"=>[".0", "00", "0."],
+     "letter2"=>["00", ".0", ".."],
+     "letter3"=>[".0", "0.", "0."],
+     "letter4"=>[".0", "00", "0."],
+     "letter5"=>[".0", "0.", ".."],
+     "letter6"=>["00", ".0", "0."],
+     "letter7"=>["00", "00", ".."]}
+    assert_equal expected, @to_english.compare_pair
   end
 
   def test_it_can_decode_braille
     @to_english.translate
-    #@to_english.write_decoded
+
     @parser.close_file
   end
 
