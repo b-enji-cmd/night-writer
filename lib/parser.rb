@@ -1,5 +1,5 @@
 class Parser
-  attr_reader :read_data
+  attr_reader :read_data, :in_file, :out_file
   def initialize
     @file_in = ARGV[0]
     @file_out = ARGV[1]
@@ -14,7 +14,6 @@ class Parser
     end
     @read_data
   end
-
 
   def write_data(data)
     @out_file.write(data)

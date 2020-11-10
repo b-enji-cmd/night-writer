@@ -34,32 +34,29 @@ class TranslatorToBraille < TranslatorEngine
     rows << top << mid << bot
   end
 
+  def remainder_array(arr)
+    sliced = []
+    arr.each_slice(80) do |split_point|
+      sliced << split_point
+    end
+    sliced
+  end
+
   def write_encoded
     translated_data = assign_rows
     top_row = translated_data[0]
     middle_row = translated_data[1]
     bottom_row = translated_data[2]
 
-    top_slice = []
-    mid_slice = []
-    bot_slice = []
-
-    top_row.each_slice(80) do |split_point|
-      top_slice << split_point
-    end
-    middle_row.each_slice(80) do |split_point|
-      mid_slice << split_point
-    end
-    bottom_row.each_slice(80) do |split_point|
-      bot_slice << split_point
-    end
+    top_slice = remainder_array(top_row)
+    mid_slice = remainder_array(middle_row)
+    bot_slice = remainder_array(bottom_row)
 
     if top_row.count > 80
       top_slice[0].append("\n")
       mid_slice[0].append("\n")
       bot_slice[0].append("\n")
     end
-
 
     top_slice[0].each do |char|
       @super_parser.write_data(char)
@@ -70,6 +67,7 @@ class TranslatorToBraille < TranslatorEngine
     bot_slice[0].each do |char|
       @super_parser.write_data(char)
     end
+
     if top_row.count > 80
       top_slice[1].each do |char|
         @super_parser.write_data(char)
@@ -85,7 +83,3 @@ class TranslatorToBraille < TranslatorEngine
 
   end
 end
-
-#top[80]
-#  mid[80]
-#   bot[80]
