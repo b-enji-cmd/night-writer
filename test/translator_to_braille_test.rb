@@ -24,6 +24,9 @@ class TranslatorToBrailleTest < Minitest::Test
     assert_instance_of String, @to_braille.translate[0][0][0]
   end
 
+  def test_it_can_assign_rows
+    assert_instance_of String, @to_braille.assign_rows[0][0]
+  end
 
   def test_it_can_write_to_file
     @to_braille.write_encoded

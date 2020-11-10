@@ -18,7 +18,7 @@ class TranslatorToEnglishTest < Minitest::Test
 
   def test_it_can_decode_braille
     @to_english.translate
-    @to_english.write_decoded
+    #@to_english.write_decoded
     @parser.close_file
   end
 
