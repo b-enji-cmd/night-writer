@@ -17,7 +17,9 @@ class ParserTest < Minitest::Test
 
 
   def test_it_can_write_to_file
-    test = @parser.parse_file
+    #test = @parser.parse_file
+    test = ".\n0\n."
+
     assert @parser.write_data(test)
   end
 
