@@ -3,8 +3,8 @@ class Parser
   def initialize
     @file_in = ARGV[0]
     @file_out = ARGV[1]
-    @out_file = File.open(@file_out,"w")
     @in_file = File.open(@file_in,"r")
+    @out_file = File.open(@file_out,"w")
     @read_data = []
   end
 
@@ -15,19 +15,20 @@ class Parser
     @read_data
   end
 
-  def close_files
-    @out_file.close
-    @in_file.close
-  end
 
   def write_data(data)
     @out_file.write(data)
   end
 
+  def close_file
+    @out_file.close
+    @in_file.close
+  end
+
   def word_count
-    test = @read_data.flat_map(&:chars)
-    test.delete(' ')
-    test.delete('\n')
-    p "Created '#{@file_out}' containing #{test.count} characters"
+    character_count = @read_data.flat_map(&:chars)
+    character_count.delete(' ')
+    character_count.delete('\n')
+    p "Created '#{@file_out}' containing #{character_count.count} characters"
   end
 end
